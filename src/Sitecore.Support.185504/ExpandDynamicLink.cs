@@ -19,9 +19,9 @@ namespace Sitecore.Support.Modules.EmailCampaign.Core.Pipelines.GenerateLink
       DynamicLink dynamicLink;
       if (args.Url.IndexOf("~/link.aspx?", StringComparison.InvariantCulture) >= 0 && DynamicLink.TryParse(args.Url, out dynamicLink))
       {
-        UrlOptions defaultUrlOptions = new UrlOptions();
+        UrlOptions defaultUrlOptions = LinkManager.GetDefaultUrlOptions();
         defaultUrlOptions.SiteResolving = true;
-       // defaultUrlOptions.Site = SiteContext.GetSite(args.WebsiteConfigurationName);
+        defaultUrlOptions.Language = args.MailMessage.TargetLanguage;
         using (new SiteContextSwitcher(SiteContext.GetSite(args.WebsiteConfigurationName)))
         {
           args.Url = LinkManager.GetItemUrl(new ItemUtilExt().GetItem(dynamicLink.ItemId), defaultUrlOptions);
