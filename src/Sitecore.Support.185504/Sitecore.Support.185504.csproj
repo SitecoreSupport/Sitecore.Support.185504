@@ -55,11 +55,15 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExpandDynamicLink.cs" />
     <Compile Include="HandleInternalLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SetServerUrl.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\zzz\Sitecore.Support.185504.config" />
+    <Content Include="App_Config\Include\zzz\Sitecore.Support.185504.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

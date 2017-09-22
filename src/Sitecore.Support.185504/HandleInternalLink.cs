@@ -31,14 +31,7 @@ namespace Sitecore.Support.Modules.EmailCampaign.Core.Pipelines.GenerateLink.Hyp
         args.AbortPipeline();
         return;
       }
-      DynamicLink dynamicLink;
-      if (args.Url.IndexOf("~/link.aspx?", StringComparison.InvariantCulture) >= 0 && DynamicLink.TryParse(args.Url, out dynamicLink))
-      {
-        UrlOptions defaultUrlOptions = LinkManager.GetDefaultUrlOptions();
-        defaultUrlOptions.SiteResolving = true;
-        defaultUrlOptions.Site = SiteContext.GetSite(args.WebsiteConfigurationName);
-        args.Url = LinkManager.GetItemUrl(new ItemUtilExt().GetItem(dynamicLink.ItemId), defaultUrlOptions);
-      }
+
       if (args.Url.IndexOf('/') != 0)
       {
         args.Url = args.Url.Insert(0, "/");
